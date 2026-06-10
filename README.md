@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# worklore
 
-## Getting Started
+매일 5분, AI 커리어 인터뷰어
 
-First, run the development server:
+직장에서 있었던 일을 가볍게 기록하면, AI가 인터뷰어처럼 역질문해 정량 지표를
+캡처하고 성취 카드 → 이력서로 누적해주는 서비스.
+
+- 제품 스펙: [docs/PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md)
+- 개발 백로그: [docs/BACKLOG.md](docs/BACKLOG.md)
+- 비용 전략: [docs/COSTS.md](docs/COSTS.md)
+
+## 개발 환경
+
+요구사항: Node 22+, pnpm, Docker (로컬 Supabase)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm supabase start        # 로컬 Supabase (마이그레이션 자동 적용)
+cp .env.example .env.local # 키 채우기 — 로컬 Supabase 키는 supabase start 출력 참조
+pnpm dev                   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+검증:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm lint && pnpm exec tsc --noEmit && pnpm build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 스택
 
-## Learn More
+TypeScript · Next.js (App Router) · Tailwind · Supabase (Postgres/Auth/RLS) ·
+LLM 프로바이더 중립(작업별 최저가 라우팅) · Vercel · Stripe · Resend
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)
