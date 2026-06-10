@@ -1,7 +1,6 @@
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { generateObject } from "ai";
 import { z } from "zod";
-import { getAnthropic } from "./client";
-import { MODELS } from "./models";
+import { getModel } from "./models";
 import {
   FOLLOWUP_SYSTEM_PROMPT_V1,
   buildFollowupUserPrompt,
@@ -19,17 +18,13 @@ export async function generateFollowupQuestions(
   rawText: string,
   entryDate: string,
 ): Promise<string[]> {
-  const response = await getAnthropic().messages.parse({
-    model: MODELS.light,
-    max_tokens: 1024,
+  const { object } = await generateObject({
+    model: getModel("light"),
+    schema: followupSchema,
     system: FOLLOWUP_SYSTEM_PROMPT_V1,
-    messages: [
-      { role: "user", content: buildFollowupUserPrompt(rawText, entryDate) },
-    ],
-    output_config: {
-      format: zodOutputFormat(followupSchema),
-    },
+    prompt: buildFollowupUserPrompt(rawText, entryDate),
+    maxOutputTokens: 1024,
   });
 
-  return (response.parsed_output?.questions ?? []).slice(0, 3);
+  return object.questions.slice(0, 3);
 }

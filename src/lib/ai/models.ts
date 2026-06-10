@@ -1,8 +1,29 @@
-// 모델 라우팅 (PRODUCT_SPEC §7): 가벼운 작업은 소형 모델, 품질이 중요한 작업은 상위 모델.
-// 비용 목표: 사용자당 월 AI 원가 < $0.5 — env 로 오버라이드 가능하게 변수화.
-export const MODELS = {
-  /** 역질문 생성, 태깅/분류 */
-  light: process.env.AI_MODEL_LIGHT ?? "claude-haiku-4-5",
-  /** 성취 카드 생성, 이력서 불릿 생성 (M2+) */
-  quality: process.env.AI_MODEL_QUALITY ?? "claude-opus-4-8",
+import type { LanguageModel } from "ai";
+import { resolveModel } from "./provider";
+
+// 모델 라우팅 (PRODUCT_SPEC §7 + docs/COSTS.md):
+// - light  = 역질문 생성, 태깅/분류 (플랜 무관 최저가)
+// - quality = 성취 카드, 이력서 불릿 — Free 는 최저가, Pro 는 상위 모델
+// 단가 변동 시 env 로만 교체한다. 모델명은 사용자에게 절대 노출하지 않는다.
+export type AiTask = "light" | "quality";
+export type Plan = "free" | "pro";
+
+const DEFAULT_SPECS = {
+  light: "openai:gpt-5-nano",
+  quality: "google:gemini-2.5-flash",
+  qualityPro: "anthropic:claude-sonnet-4-6",
 } as const;
+
+export function modelSpecFor(task: AiTask, plan: Plan = "free"): string {
+  if (task === "light") {
+    return process.env.AI_MODEL_LIGHT ?? DEFAULT_SPECS.light;
+  }
+  if (plan === "pro") {
+    return process.env.AI_MODEL_QUALITY_PRO ?? DEFAULT_SPECS.qualityPro;
+  }
+  return process.env.AI_MODEL_QUALITY ?? DEFAULT_SPECS.quality;
+}
+
+export function getModel(task: AiTask, plan: Plan = "free"): LanguageModel {
+  return resolveModel(modelSpecFor(task, plan));
+}
