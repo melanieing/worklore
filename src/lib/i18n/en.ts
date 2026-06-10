@@ -42,6 +42,14 @@ export const en = {
     "Generated from your original entry — regenerate anytime, your words are never lost.",
   "card.error.generic": "Could not generate the card. Please try again.",
 
+  "timeline.title": "Timeline",
+  "timeline.nav": "Timeline",
+  "timeline.allTags": "#all",
+  "timeline.empty.heading": "Your story starts here",
+  "timeline.empty.hint":
+    "Confirm your first achievement card and watch your career stack up.",
+  "timeline.uncarded": "not yet turned into cards",
+
   "qa.heading": "Quick follow-ups",
   "qa.hint": "Answer what you can — numbers fade fast, so now is the best time.",
   "qa.answerPlaceholder": "Your answer…",

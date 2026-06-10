@@ -24,6 +24,12 @@ export default async function AppLayout({
           {t("app.name")}
         </Link>
         <nav className="flex items-center gap-4 text-sm">
+          <Link href="/journal" className="text-neutral-500 hover:text-neutral-900">
+            {t("journal.title")}
+          </Link>
+          <Link href="/timeline" className="text-neutral-500 hover:text-neutral-900">
+            {t("timeline.nav")}
+          </Link>
           <Link
             href="/journal/new"
             className="rounded-md bg-neutral-900 px-3 py-1.5 font-medium text-white hover:bg-neutral-700"
