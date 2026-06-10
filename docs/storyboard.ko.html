@@ -45,6 +45,7 @@
   .m2 { background: var(--green-soft); color: var(--green); }
   .m3 { background: var(--gold-soft); color: var(--gold); }
   .m4 { background: #f3e8ff; color: #7c3aed; }
+  .v2 { background: #fce7f3; color: #be185d; }
   .sec-head .note { color: var(--muted); font-size: 13px; }
 
   .row { display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start; }
@@ -126,7 +127,8 @@
     <span class="step">③ 답변</span><span class="arr">→</span>
     <span class="step">④ 성취 카드</span><span class="arr">→</span>
     <span class="step">⑤ 이력서 불릿 / 내보내기</span><span class="arr">→</span>
-    <span class="step">⑥ 월간 임팩트 요약 (보상)</span>
+    <span class="step">⑥ 월간 임팩트 요약 (보상)</span><span class="arr">→</span>
+    <span class="step" style="border-color:#be185d; color:#be185d;">⑦ 공고 맞춤 문서 (V2 수익화)</span>
   </div>
 
   <!-- ════════ 1. 온보딩 ════════ -->
@@ -480,8 +482,85 @@
     </div>
   </section>
 
+  <!-- ════════ 6. 공고 맞춤 문서 (V2) ════════ -->
+  <section>
+    <div class="sec-head"><h2>6. 공고 맞춤 문서 추출</h2><span class="m v2">V2 수익화</span><span class="note">"이직 결심 순간"의 한복판 — 쌓인 카드가 공고를 만나는 곳</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">공고 맞춤</span><span class="chip" style="background:#fce7f3; color:#be185d; border-color:transparent;">V2</span></div>
+          <div class="body" style="gap:12px;">
+            <div class="h-title" style="font-size:16px;">지원할 공고를 알려주세요</div>
+            <div class="input">https://careers.acme.com/jobs/8841 — 붙여넣기</div>
+            <div class="sub" style="text-align:center; font-size:11px;">또는 공고 텍스트 직접 붙여넣기</div>
+            <div class="divider"></div>
+            <span class="label">공고 분석 결과 · Acme — 시니어 백엔드</span>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span class="chip blue">대용량 트래픽</span><span class="chip blue">성능 최적화</span><span class="chip blue">결제 도메인</span><span class="chip blue">팀 리드 경험</span><span class="chip">Kubernetes</span>
+            </div>
+            <div class="sub">공고가 요구하는 핵심 역량 5개를 찾았어요. 멜라니님의 성취 카드 14장과 매칭해볼게요.</div>
+            <div class="btn full blue">내 카드와 매칭하기 →</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag v2">V2</span>공고 입력 &amp; 분석</b>
+        URL 또는 텍스트 붙여넣기 → 요구 역량 자동 추출. 공고도 데이터로 저장(job_postings) — 지원 이력 관리의 시작점.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ 매칭 결과</span><span class="chip green">매칭률 82%</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="card" style="border-left:3px solid var(--green); padding:11px 13px;">
+              <div class="sub" style="font-size:11px;">성능 최적화 · 대용량 트래픽</div>
+              <div style="font-size:13px; font-weight:700;">✓ 결제 지연시간 75% 단축 (일 4만 건)</div>
+              <div class="sub" style="font-size:11px;">정량 지표 보유 — 1순위 배치 추천</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--green); padding:11px 13px;">
+              <div class="sub" style="font-size:11px;">팀 리드 경험</div>
+              <div style="font-size:13px; font-weight:700;">✓ 결제 페이지 재작성 4인 팀 리드</div>
+            </div>
+            <div class="card" style="border-left:3px solid #be185d; padding:11px 13px;">
+              <div class="sub" style="font-size:11px;">Kubernetes</div>
+              <div style="font-size:13px; font-weight:700;">⚠ 매칭되는 카드가 없어요</div>
+              <div class="sub" style="font-size:11px;">관련 경험이 있다면? <b style="color:var(--accent);">지금 기록하기 →</b> 2분이면 카드가 생겨요</div>
+            </div>
+            <div class="btn full blue">이 매칭으로 맞춤 문서 만들기</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag v2">V2</span>요구사항 ↔ 카드 매칭</b>
+        차별화의 핵심 — 검증된 정량 성취와 공고 요구사항을 매칭. 갭(매칭 없음)은 기록 루프로 되돌려보내 데이터 축적까지 유도.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ 문서 생성</span><span class="chip gold">Pro</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="h-title" style="font-size:16px;">Acme 맞춤 문서 패키지</div>
+            <div class="sub">합격 가능성이 높아지는 순서로 성취를 재배열하고, 공고의 언어로 다시 씁니다.</div>
+            <div class="card" style="padding:11px 13px;">
+              <div class="metric"><span>☑ 이력서 (공고 맞춤)</span><b></b></div>
+              <div class="metric"><span>☑ 경력기술서</span><b></b></div>
+              <div class="metric"><span>☑ 자기소개서</span><b></b></div>
+              <div class="metric" style="border:none;"><span>☐ 포트폴리오 요약</span><b></b></div>
+            </div>
+            <div class="card" style="text-align:center; padding:14px; background:var(--gold-soft); border-color:transparent;">
+              <div style="font-size:13px; font-weight:700;">공고 맞춤 추출 — 크레딧 3개 사용</div>
+              <div class="sub" style="font-size:11.5px; margin-top:4px;">보유 크레딧 5개 · 일반 추출(공고 무관)은 Pro에 포함</div>
+            </div>
+            <div class="btn full blue">3개 문서 생성하기</div>
+            <div class="sub" style="text-align:center; font-size:11px;">생성 후에도 모든 문서는 편집 가능해요</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag v2">V2</span>문서 선택 &amp; 과금</b>
+        로케일별 문서 종류(KO: 경력기술서/자소서 포함). 일반 추출 = Pro 기본, 공고 맞춤 = 크레딧 추가 과금(티어 vs 크레딧은 A/B 예정).</div>
+      </div>
+
+    </div>
+  </section>
+
   <div class="sub" style="border-top:1px solid var(--line); padding-top:16px;">
-    Worklore UI 스토리보드 (한국어판) · docs/PRODUCT_SPEC.md 기준 · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span>
+    Worklore UI 스토리보드 (한국어판) · docs/PRODUCT_SPEC.md 기준 · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span> <span class="chip" style="background:#fce7f3; color:#be185d; border-color:transparent;">V2 공고 맞춤</span>
   </div>
 
 </div>
