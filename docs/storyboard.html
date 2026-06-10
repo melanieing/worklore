@@ -6,16 +6,20 @@
 <title>Worklore — UI 스토리보드</title>
 <style>
   :root {
-    --ink: #1c1917;
-    --paper: #faf9f7;
-    --line: #e7e3dd;
-    --accent: #2563eb;
-    --accent-soft: #eff4ff;
+    /* Worklore 팔레트 — docs/DESIGN.md 가 SSOT */
+    --ink: #241f33;
+    --paper: #faf8f5;
+    --line: #e6e1ed;
+    --accent: #6d28d9;        /* iris */
+    --accent-deep: #4c1d95;   /* plum */
+    --accent-soft: #f1ecfb;   /* lavender */
+    --berry: #a21caf;
+    --berry-soft: #fae8ff;
     --gold: #b45309;
     --gold-soft: #fef3e2;
     --green: #047857;
     --green-soft: #ecfdf3;
-    --muted: #78716c;
+    --muted: #6e6880;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -45,6 +49,7 @@
   .m2 { background: var(--green-soft); color: var(--green); }
   .m3 { background: var(--gold-soft); color: var(--gold); }
   .m4 { background: #f3e8ff; color: #7c3aed; }
+  .v2 { background: var(--berry-soft); color: var(--berry); }
   .sec-head .note { color: var(--muted); font-size: 13px; }
 
   .row { display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start; }
@@ -117,7 +122,8 @@
     <h1>Worklore <em>storyboard</em></h1>
     <p>"매일 5분, AI 커리어 인터뷰어" — 핵심 루프를 따라 화면이 어떻게 흐르는지 보여주는 스토리보드입니다.
     각 화면 아래 캡션에 설계 의도(제품 원칙)와 해당 마일스톤을 표시했습니다. V1은 반응형 웹(모바일 우선)이라 모바일 프레임 기준입니다.
-    한국어판: <a href="storyboard.ko.html" style="color:var(--accent);">storyboard.ko.html</a></p>
+    한국어판: <a href="storyboard.ko.html" style="color:var(--accent);">storyboard.ko.html</a> ·
+    브랜드/팔레트: <a href="DESIGN.md" style="color:var(--accent);">DESIGN.md</a></p>
   </div>
 
   <div class="loop">
@@ -126,7 +132,8 @@
     <span class="step">③ 답변</span><span class="arr">→</span>
     <span class="step">④ 성취 카드</span><span class="arr">→</span>
     <span class="step">⑤ 이력서 불릿 / Export</span><span class="arr">→</span>
-    <span class="step">⑥ 월간 임팩트 요약 (보상)</span>
+    <span class="step">⑥ 월간 임팩트 요약 (보상)</span><span class="arr">→</span>
+    <span class="step" style="border-color:var(--berry); color:var(--berry);">⑦ 공고 맞춤 문서 (V2 수익화)</span>
   </div>
 
   <!-- ════════ 1. 온보딩 ════════ -->
@@ -480,8 +487,84 @@
     </div>
   </section>
 
+  <!-- ════════ 6. 공고 맞춤 문서 (V2) ════════ -->
+  <section>
+    <div class="sec-head"><h2>6. 공고 맞춤 문서 추출</h2><span class="m v2">V2 수익화</span><span class="note">"이직 결심 순간"의 한복판 — 쌓인 카드가 공고를 만나는 곳</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">Tailor</span><span class="chip" style="background:var(--berry-soft); color:var(--berry); border-color:transparent;">V2</span></div>
+          <div class="body" style="gap:12px;">
+            <div class="h-title" style="font-size:16px;">Which job are you applying for?</div>
+            <div class="input">https://careers.acme.com/jobs/8841 — paste</div>
+            <div class="sub" style="text-align:center; font-size:11px;">or paste the job description text</div>
+            <div class="divider"></div>
+            <span class="label">Analysis · Acme — Senior Backend</span>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span class="chip blue">High-traffic systems</span><span class="chip blue">Performance</span><span class="chip blue">Payments domain</span><span class="chip blue">Team leadership</span><span class="chip">Kubernetes</span>
+            </div>
+            <div class="sub">Found 5 core requirements. Let's match them against your 14 achievement cards.</div>
+            <div class="btn full blue">Match my cards →</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag v2">V2</span>공고 입력 &amp; 분석</b>
+        URL 또는 텍스트 붙여넣기 → 요구 역량 자동 추출. 공고도 데이터로 저장(job_postings) — 지원 이력 관리의 시작점.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ Match results</span><span class="chip green">82% match</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="card" style="border-left:3px solid var(--green); padding:11px 13px;">
+              <div class="sub" style="font-size:11px;">Performance · High-traffic</div>
+              <div style="font-size:13px; font-weight:700;">✓ Cut checkout latency 75% (40k orders/day)</div>
+              <div class="sub" style="font-size:11px;">Has verified metrics — recommend leading with this</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--green); padding:11px 13px;">
+              <div class="sub" style="font-size:11px;">Team leadership</div>
+              <div style="font-size:13px; font-weight:700;">✓ Led 4-person checkout rewrite</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--berry); padding:11px 13px;">
+              <div class="sub" style="font-size:11px;">Kubernetes</div>
+              <div style="font-size:13px; font-weight:700;">⚠ No matching card</div>
+              <div class="sub" style="font-size:11px;">Done anything related? <b style="color:var(--accent);">Log it now →</b> 2 minutes makes a card</div>
+            </div>
+            <div class="btn full blue">Build tailored documents</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag v2">V2</span>요구사항 ↔ 카드 매칭</b>
+        차별화의 핵심 — 검증된 정량 성취와 공고 요구사항을 매칭. 갭(매칭 없음)은 기록 루프로 되돌려보내 데이터 축적까지 유도.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ Generate</span><span class="chip gold">Pro</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="h-title" style="font-size:16px;">Your Acme application kit</div>
+            <div class="sub">Achievements reordered for fit, rewritten in the posting's own language.</div>
+            <div class="card" style="padding:11px 13px;">
+              <div class="metric"><span>☑ Resume (tailored)</span><b></b></div>
+              <div class="metric"><span>☑ Cover letter</span><b></b></div>
+              <div class="metric" style="border:none;"><span>☐ Portfolio summary</span><b></b></div>
+            </div>
+            <div class="card" style="text-align:center; padding:14px; background:var(--gold-soft); border-color:transparent;">
+              <div style="font-size:13px; font-weight:700;">Tailored extraction — uses 2 credits</div>
+              <div class="sub" style="font-size:11.5px; margin-top:4px;">5 credits left · generic export is included in Pro</div>
+            </div>
+            <div class="btn full blue">Generate 2 documents</div>
+            <div class="sub" style="text-align:center; font-size:11px;">Everything stays editable after generation</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag v2">V2</span>문서 선택 &amp; 과금</b>
+        로케일별 문서 종류(EN: resume/cover letter, KO: 경력기술서/자소서 포함). 일반 추출 = Pro 기본, 공고 맞춤 = 크레딧 추가 과금(티어 vs 크레딧은 A/B 예정).</div>
+      </div>
+
+    </div>
+  </section>
+
   <div class="sub" style="border-top:1px solid var(--line); padding-top:16px;">
-    Worklore UI storyboard · docs/PRODUCT_SPEC.md 기준 · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span>
+    Worklore UI storyboard · docs/PRODUCT_SPEC.md 기준 · 팔레트: docs/DESIGN.md · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span> <span class="chip" style="background:var(--berry-soft); color:var(--berry); border-color:transparent;">V2 공고 맞춤</span>
   </div>
 
 </div>

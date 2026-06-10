@@ -6,16 +6,20 @@
 <title>Worklore — UI 스토리보드 (한국어판)</title>
 <style>
   :root {
-    --ink: #1c1917;
-    --paper: #faf9f7;
-    --line: #e7e3dd;
-    --accent: #2563eb;
-    --accent-soft: #eff4ff;
+    /* Worklore 팔레트 — docs/DESIGN.md 가 SSOT */
+    --ink: #241f33;
+    --paper: #faf8f5;
+    --line: #e6e1ed;
+    --accent: #6d28d9;        /* iris */
+    --accent-deep: #4c1d95;   /* plum */
+    --accent-soft: #f1ecfb;   /* lavender */
+    --berry: #a21caf;
+    --berry-soft: #fae8ff;
     --gold: #b45309;
     --gold-soft: #fef3e2;
     --green: #047857;
     --green-soft: #ecfdf3;
-    --muted: #78716c;
+    --muted: #6e6880;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -45,7 +49,7 @@
   .m2 { background: var(--green-soft); color: var(--green); }
   .m3 { background: var(--gold-soft); color: var(--gold); }
   .m4 { background: #f3e8ff; color: #7c3aed; }
-  .v2 { background: #fce7f3; color: #be185d; }
+  .v2 { background: var(--berry-soft); color: var(--berry); }
   .sec-head .note { color: var(--muted); font-size: 13px; }
 
   .row { display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start; }
@@ -118,7 +122,8 @@
     <h1>Worklore <em>스토리보드</em> <span style="font-size:15px; color:var(--muted); font-family:inherit; font-style:normal;">한국어판</span></h1>
     <p>"매일 5분, AI 커리어 인터뷰어" — 핵심 루프를 따라 화면이 어떻게 흐르는지 보여주는 스토리보드입니다.
     V1 출시 UI는 영어(en)이며, 이 한국어판은 화면 검토용이자 V1.5 ko 로케일의 미리보기입니다.
-    영어판: <a href="storyboard.html" style="color:var(--accent);">storyboard.html</a></p>
+    영어판: <a href="storyboard.html" style="color:var(--accent);">storyboard.html</a> ·
+    브랜드/팔레트: <a href="DESIGN.md" style="color:var(--accent);">DESIGN.md</a></p>
   </div>
 
   <div class="loop">
@@ -128,7 +133,7 @@
     <span class="step">④ 성취 카드</span><span class="arr">→</span>
     <span class="step">⑤ 이력서 불릿 / 내보내기</span><span class="arr">→</span>
     <span class="step">⑥ 월간 임팩트 요약 (보상)</span><span class="arr">→</span>
-    <span class="step" style="border-color:#be185d; color:#be185d;">⑦ 공고 맞춤 문서 (V2 수익화)</span>
+    <span class="step" style="border-color:var(--berry); color:var(--berry);">⑦ 공고 맞춤 문서 (V2 수익화)</span>
   </div>
 
   <!-- ════════ 1. 온보딩 ════════ -->
@@ -489,7 +494,7 @@
 
       <div class="shot">
         <div class="frame">
-          <div class="appbar"><span class="logo">공고 맞춤</span><span class="chip" style="background:#fce7f3; color:#be185d; border-color:transparent;">V2</span></div>
+          <div class="appbar"><span class="logo">공고 맞춤</span><span class="chip" style="background:var(--berry-soft); color:var(--berry); border-color:transparent;">V2</span></div>
           <div class="body" style="gap:12px;">
             <div class="h-title" style="font-size:16px;">지원할 공고를 알려주세요</div>
             <div class="input">https://careers.acme.com/jobs/8841 — 붙여넣기</div>
@@ -520,7 +525,7 @@
               <div class="sub" style="font-size:11px;">팀 리드 경험</div>
               <div style="font-size:13px; font-weight:700;">✓ 결제 페이지 재작성 4인 팀 리드</div>
             </div>
-            <div class="card" style="border-left:3px solid #be185d; padding:11px 13px;">
+            <div class="card" style="border-left:3px solid var(--berry); padding:11px 13px;">
               <div class="sub" style="font-size:11px;">Kubernetes</div>
               <div style="font-size:13px; font-weight:700;">⚠ 매칭되는 카드가 없어요</div>
               <div class="sub" style="font-size:11px;">관련 경험이 있다면? <b style="color:var(--accent);">지금 기록하기 →</b> 2분이면 카드가 생겨요</div>
@@ -560,7 +565,7 @@
   </section>
 
   <div class="sub" style="border-top:1px solid var(--line); padding-top:16px;">
-    Worklore UI 스토리보드 (한국어판) · docs/PRODUCT_SPEC.md 기준 · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span> <span class="chip" style="background:#fce7f3; color:#be185d; border-color:transparent;">V2 공고 맞춤</span>
+    Worklore UI 스토리보드 (한국어판) · docs/PRODUCT_SPEC.md 기준 · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span> <span class="chip" style="background:var(--berry-soft); color:var(--berry); border-color:transparent;">V2 공고 맞춤</span>
   </div>
 
 </div>
