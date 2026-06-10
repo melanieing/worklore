@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Worklore — UI 스토리보드</title>
+<title>Worklore — UI Storyboard</title>
 <style>
   :root {
-    /* Worklore 팔레트 — docs/DESIGN.md 가 SSOT */
+    /* Worklore palette — docs/DESIGN.md is the SSOT */
     --ink: #241f33;
     --paper: #faf8f5;
     --line: #e6e1ed;
@@ -120,25 +120,25 @@
 
   <div class="hero">
     <h1>Worklore <em>storyboard</em></h1>
-    <p>"매일 5분, AI 커리어 인터뷰어" — 핵심 루프를 따라 화면이 어떻게 흐르는지 보여주는 스토리보드입니다.
-    각 화면 아래 캡션에 설계 의도(제품 원칙)와 해당 마일스톤을 표시했습니다. V1은 반응형 웹(모바일 우선)이라 모바일 프레임 기준입니다.
-    한국어판: <a href="storyboard.ko.html" style="color:var(--accent);">storyboard.ko.html</a> ·
-    브랜드/팔레트: <a href="DESIGN.md" style="color:var(--accent);">DESIGN.md</a></p>
+    <p>"Your 5-minute AI career interviewer" — this storyboard walks through the screens along the core loop.
+    Each caption notes the design intent (product principle) and its milestone. V1 is a responsive web app (mobile-first), so frames are mobile.
+    Korean version: <a href="storyboard.ko.html" style="color:var(--accent);">storyboard.ko.html</a> ·
+    Brand / palette: <a href="DESIGN.md" style="color:var(--accent);">DESIGN.md</a></p>
   </div>
 
   <div class="loop">
-    <span class="step">① 기록</span><span class="arr">→</span>
-    <span class="step">② AI 역질문</span><span class="arr">→</span>
-    <span class="step">③ 답변</span><span class="arr">→</span>
-    <span class="step">④ 성취 카드</span><span class="arr">→</span>
-    <span class="step">⑤ 이력서 불릿 / Export</span><span class="arr">→</span>
-    <span class="step">⑥ 월간 임팩트 요약 (보상)</span><span class="arr">→</span>
-    <span class="step" style="border-color:var(--berry); color:var(--berry);">⑦ 공고 맞춤 문서 (V2 수익화)</span>
+    <span class="step">① Log</span><span class="arr">→</span>
+    <span class="step">② AI follow-ups</span><span class="arr">→</span>
+    <span class="step">③ Answer</span><span class="arr">→</span>
+    <span class="step">④ Achievement card</span><span class="arr">→</span>
+    <span class="step">⑤ Résumé bullets / Export</span><span class="arr">→</span>
+    <span class="step">⑥ Monthly impact recap (reward)</span><span class="arr">→</span>
+    <span class="step" style="border-color:var(--berry); color:var(--berry);">⑦ Posting-tailored docs (V2 monetization)</span>
   </div>
 
-  <!-- ════════ 1. 온보딩 ════════ -->
+  <!-- ════════ 1. Onboarding ════════ -->
   <section>
-    <div class="sec-head"><h2>1. 진입 &amp; 온보딩</h2><span class="m m1">M1</span><span class="note">가입 직후에도 빈 페이지를 주지 않는다 — AI가 먼저 말을 건다</span></div>
+    <div class="sec-head"><h2>1. Entry &amp; Onboarding</h2><span class="m m1">M1</span><span class="note">Never a blank page, even right after sign-up — the AI speaks first</span></div>
     <div class="row">
 
       <div class="shot">
@@ -160,8 +160,8 @@
             <div class="sub" style="text-align:center;">No résumé panic. Just talk about your day.</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m1">M1</span>로그인 / 가입</b>
-        이메일 + 소셜(Google, M1-8). 카피부터 "이력서 패닉 없애기"라는 가치 제안을 전달.</div>
+        <div class="caption"><b><span class="tag m1">M1</span>Sign in / Sign up</b>
+        Email + social (Google, M1-8). The copy leads with the value proposition: no more résumé panic.</div>
       </div>
 
       <div class="shot">
@@ -176,16 +176,16 @@
             <div class="sub" style="font-size:11.5px;">2–3 times a week is plenty. No streaks, no guilt.</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m1">M1</span>첫 화면 (빈 상태)</b>
-        원칙 1 "빈 페이지 금지" — AI가 먼저 질문하고, 텍스트/음성 두 입구를 동급으로 제시. 원칙 4 "주 2~3회면 충분" 톤 명시.</div>
+        <div class="caption"><b><span class="tag m1">M1</span>Home (empty state)</b>
+        Principle 1, "no blank pages" — the AI asks first, and text/voice entries get equal billing. Principle 4's "2–3 times a week is plenty" tone is explicit.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ════════ 1.5 이력서 임포트 ════════ -->
+  <!-- ════════ 1.5 Resume import ════════ -->
   <section>
-    <div class="sec-head"><h2>1.5 기존 이력서 임포트</h2><span class="m m2">M2.5</span><span class="note">콜드 스타트 해결 — 가입 5분 만에 채워진 타임라인</span></div>
+    <div class="sec-head"><h2>1.5 Import an existing résumé</h2><span class="m m2">M2.5</span><span class="note">Solves cold start — a populated timeline five minutes after sign-up</span></div>
     <div class="row">
 
       <div class="shot">
@@ -206,8 +206,8 @@
             <div class="sub" style="font-size:11.5px;">Skip — I'll start fresh</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m2">M2.5</span>온보딩 임포트 (건너뛰기 가능)</b>
-        가입 직후 1회 제안 + 이후 설정/이력서 화면에서 언제든 가능. 파일과 추출 텍스트는 원데이터로 immutable 보존(resume_imports).</div>
+        <div class="caption"><b><span class="tag m2">M2.5</span>Onboarding import (skippable)</b>
+        Offered once right after sign-up, and always available later from Settings / Resume. Files and extracted text are preserved as immutable raw data (resume_imports).</div>
       </div>
 
       <div class="shot">
@@ -231,16 +231,16 @@
             <div class="btn full">Confirm all 11 → build my timeline</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m2">M2.5</span>추출 카드 검토</b>
-        AI가 멋대로 확정하지 않는다 — 전부 draft로 들어와 사용자가 검토 후 일괄/개별 확정. 재임포트 시 중복 감지·병합 제안.</div>
+        <div class="caption"><b><span class="tag m2">M2.5</span>Review extracted cards</b>
+        The AI never confirms on its own — everything arrives as drafts for the user to review and confirm in bulk or one by one. Re-imports get duplicate detection and merge suggestions.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ════════ 2. 기록 + 역질문 ════════ -->
+  <!-- ════════ 2. Log + follow-ups ════════ -->
   <section>
-    <div class="sec-head"><h2>2. 기록 → AI 역질문 루프</h2><span class="m m1">M1</span><span class="note">지표가 신선할 때 캡처한다 — 역질문은 1~3개, 심문 금지</span></div>
+    <div class="sec-head"><h2>2. Log → AI follow-up loop</h2><span class="m m1">M1</span><span class="note">Capture metrics while they're fresh — 1–3 questions, never an interrogation</span></div>
     <div class="row">
 
       <div class="shot">
@@ -256,8 +256,8 @@
             <div class="sub">Your original words are kept forever, untouched. Cards are generated <i>from</i> them — never instead of them.</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m1">M1</span>기록 입력</b>
-        줄글 그대로 적게 한다. 원칙 2 "원데이터 절대 보존"을 UI 카피로도 약속.</div>
+        <div class="caption"><b><span class="tag m1">M1</span>Entry input</b>
+        Free-form prose, written as it comes. Principle 2 "raw data is never lost" is promised right in the UI copy.</div>
       </div>
 
       <div class="shot">
@@ -278,9 +278,9 @@
             <div class="sub" style="text-align:center;">Skip — answer later from the entry page</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m1">M1</span>역질문 스레드</b>
-        원칙 3 — 1~3개 제한, 전후 수치부터(우선순위 ①). 건너뛰기 가능: 심문이 아니라 코치. 답변도 원데이터로 immutable 저장.
-        막막하면 질문당 1회 "힌트 요청"(M2-8) — 단방향 인터뷰는 유지, 자유 챗봇 아님.</div>
+        <div class="caption"><b><span class="tag m1">M1</span>Follow-up thread</b>
+        Principle 3 — capped at 1–3 questions, before/after numbers first (priority ①). Skippable: a coach, not an interrogator. Answers are stored as immutable raw data too.
+        Stuck? One "hint request" per question (M2-8) — the interview stays one-way; this is not a free-form chatbot.</div>
       </div>
 
       <div class="shot">
@@ -296,16 +296,16 @@
             <div class="sub" style="text-align:center;">You can always generate it later — your words are saved.</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m2">M2</span>카드 생성 제안</b>
-        자동 생성하지 않고 사용자 액션으로(비용 전략 §5 — 불필요 호출 제거). 거절해도 원데이터가 있으니 언제든 가능.</div>
+        <div class="caption"><b><span class="tag m2">M2</span>Card generation prompt</b>
+        Never auto-generated — a user action (cost strategy §5: no unnecessary calls). Declining loses nothing; the raw data makes it possible anytime.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ════════ 3. 성취 카드 ════════ -->
+  <!-- ════════ 3. Achievement cards ════════ -->
   <section>
-    <div class="sec-head"><h2>3. 성취 카드 (STAR)</h2><span class="m m2">M2</span><span class="note">파생물은 언제든 재생성 가능 — draft → confirmed</span></div>
+    <div class="sec-head"><h2>3. Achievement cards (STAR)</h2><span class="m m2">M2</span><span class="note">Derivatives are regenerable anytime — draft → confirmed</span></div>
     <div class="row">
 
       <div class="shot">
@@ -332,8 +332,8 @@
             <div class="sub" style="font-size:11px;">↻ Regenerate · <span class="pro-badge">PRO</span> higher-quality regeneration</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m2">M2</span>카드 상세 (draft)</b>
-        STAR + metrics + skills 자동 구조화. 사용자가 다듬고 confirm. "고품질 재생성"은 Pro(플랜별 모델 라우팅 결정).</div>
+        <div class="caption"><b><span class="tag m2">M2</span>Card detail (draft)</b>
+        STAR + metrics + skills auto-structured; the user refines and confirms. "Higher-quality regeneration" is Pro (the plan-based model routing decision).</div>
       </div>
 
       <div class="shot">
@@ -357,16 +357,16 @@
             <div class="btn full ghost">+ 12 entries not yet carded</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m2">M2</span>타임라인</b>
-        커리어가 쌓이는 게 보이는 화면 — 리텐션의 시각적 보상. 기간순 정렬, 태그 필터, 카드화 안 된 기록도 노출해 루프 재진입 유도.</div>
+        <div class="caption"><b><span class="tag m2">M2</span>Timeline</b>
+        The screen where a career visibly accumulates — retention's visual reward. Sorted by period, tag filters, and un-carded entries surfaced to pull users back into the loop.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ════════ 4. 이력서 + 유료벽 ════════ -->
+  <!-- ════════ 4. Résumé + paywall ════════ -->
   <section>
-    <div class="sec-head"><h2>4. 이력서 산출 &amp; 유료벽</h2><span class="m m3">M3</span><span class="note">"이직 결심 순간"이 과금 트리거 — export는 Pro 뒤에</span></div>
+    <div class="sec-head"><h2>4. Résumé output &amp; paywall</h2><span class="m m3">M3</span><span class="note">"The moment you decide to switch jobs" is the billing trigger — export sits behind Pro</span></div>
     <div class="row">
 
       <div class="shot">
@@ -390,8 +390,8 @@
             </div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m3">M3</span>이력서 불릿</b>
-        confirmed 카드 → 정량 중심 불릿 자동 생성, 톤 2종(concise/detailed), 버전 관리. export 버튼에 Pro 게이트.</div>
+        <div class="caption"><b><span class="tag m3">M3</span>Résumé bullets</b>
+        Confirmed cards → metric-first bullets, two tones (concise/detailed), versioned. Export buttons carry the Pro gate.</div>
       </div>
 
       <div class="shot">
@@ -411,8 +411,8 @@
             <div class="sub" style="text-align:center;">Free keeps everything saved. Forever.</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m3">M3</span>업그레이드 모달</b>
-        "이직 결심 순간"에 만나는 화면. 가치를 먼저 쌓고(14개 성취) 그 순간에 과금. Pro 혜택에 "더 정교한 카드" — 모델명은 노출 금지.</div>
+        <div class="caption"><b><span class="tag m3">M3</span>Upgrade modal</b>
+        Met at "the moment you decide to switch jobs". Value accumulates first (14 achievements), billing arrives at that moment. Pro is framed as "more polished cards" — model names are never exposed.</div>
       </div>
 
       <div class="shot">
@@ -436,16 +436,16 @@
             <div class="sub">Display name · Job title · Timezone · Locale (EN)</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m3">M3</span>설정 / 플랜</b>
-        사용량·플랜·요약 이메일 토글. Free는 "Entries 9 / 10"처럼 한도 표시 → 자연스러운 업그레이드 동선.</div>
+        <div class="caption"><b><span class="tag m3">M3</span>Settings / plan</b>
+        Usage, plan, and recap-email toggle. Free shows a limit ("Entries 9 / 10") — a natural path toward upgrading.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ════════ 5. 음성 + 월간 요약 ════════ -->
+  <!-- ════════ 5. Voice + monthly recap ════════ -->
   <section>
-    <div class="sec-head"><h2>5. 음성 입력 &amp; 월간 임팩트 요약</h2><span class="m m4">M4</span><span class="note">퇴근길 2분 녹음(마찰 제거) + 월간 요약(보상 루프)</span></div>
+    <div class="sec-head"><h2>5. Voice input &amp; monthly impact recap</h2><span class="m m4">M4</span><span class="note">A 2-minute commute recording (friction removed) + monthly recap (reward loop)</span></div>
     <div class="row">
 
       <div class="shot">
@@ -460,8 +460,8 @@
             <div class="sub">Tap to finish · transcript shown for review before saving</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m4">M4</span>음성 녹음</b>
-        음성은 1급 시민. 녹음 → STT 전사 → 확인/수정 → 저장하면 기존 역질문 루프 그대로 재사용. 오디오 원본도 보존(audio_url).</div>
+        <div class="caption"><b><span class="tag m4">M4</span>Voice recording</b>
+        Voice is a first-class citizen. Record → STT transcript → review/edit → save, then the existing follow-up loop takes over. The original audio is preserved too (audio_url).</div>
       </div>
 
       <div class="shot">
@@ -480,16 +480,16 @@
             <div class="sub" style="font-size:11px; text-align:center;">No entries in July yet? That's fine. 2–3 a week is plenty.</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag m4">M4</span>월간 임팩트 요약 (이메일)</b>
-        스트릭 대신 성과 요약으로 보상(원칙 4). "사라질 뻔한 지표 9개 구조" — 제품 가치를 숫자로 증명하고 재방문 유도.</div>
+        <div class="caption"><b><span class="tag m4">M4</span>Monthly impact recap (email)</b>
+        Reward via recap, not streaks (principle 4). "9 metrics rescued from oblivion" — proves the product's value in numbers and invites a return visit.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ════════ 6. 공고 맞춤 문서 (V2) ════════ -->
+  <!-- ════════ 6. Posting-tailored documents (V2) ════════ -->
   <section>
-    <div class="sec-head"><h2>6. 공고 맞춤 문서 추출</h2><span class="m v2">V2 수익화</span><span class="note">"이직 결심 순간"의 한복판 — 쌓인 카드가 공고를 만나는 곳</span></div>
+    <div class="sec-head"><h2>6. Posting-tailored documents</h2><span class="m v2">V2 monetization</span><span class="note">The heart of "the moment you decide to switch jobs" — where accumulated cards meet a job posting</span></div>
     <div class="row">
 
       <div class="shot">
@@ -508,8 +508,8 @@
             <div class="btn full blue">Match my cards →</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag v2">V2</span>공고 입력 &amp; 분석</b>
-        URL 또는 텍스트 붙여넣기 → 요구 역량 자동 추출. 공고도 데이터로 저장(job_postings) — 지원 이력 관리의 시작점.</div>
+        <div class="caption"><b><span class="tag v2">V2</span>Posting input &amp; analysis</b>
+        Paste a URL or text → required skills auto-extracted. Postings are stored as data too (job_postings) — the start of application tracking.</div>
       </div>
 
       <div class="shot">
@@ -533,8 +533,8 @@
             <div class="btn full blue">Build tailored documents</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag v2">V2</span>요구사항 ↔ 카드 매칭</b>
-        차별화의 핵심 — 검증된 정량 성취와 공고 요구사항을 매칭. 갭(매칭 없음)은 기록 루프로 되돌려보내 데이터 축적까지 유도.</div>
+        <div class="caption"><b><span class="tag v2">V2</span>Requirements ↔ card matching</b>
+        The core differentiator — verified, quantified achievements matched against posting requirements. Gaps (no match) route back into the logging loop, reinforcing data accumulation.</div>
       </div>
 
       <div class="shot">
@@ -556,15 +556,15 @@
             <div class="sub" style="text-align:center; font-size:11px;">Everything stays editable after generation</div>
           </div>
         </div>
-        <div class="caption"><b><span class="tag v2">V2</span>문서 선택 &amp; 과금</b>
-        로케일별 문서 종류(EN: resume/cover letter, KO: 경력기술서/자소서 포함). 일반 추출 = Pro 기본, 공고 맞춤 = 크레딧 추가 과금(티어 vs 크레딧은 A/B 예정).</div>
+        <div class="caption"><b><span class="tag v2">V2</span>Document picker &amp; billing</b>
+        Document types per locale (EN: resume/cover letter; KO adds 경력기술서/자기소개서). Generic extraction is included in Pro; posting-tailored costs extra (tier vs per-posting credits — to be A/B tested).</div>
       </div>
 
     </div>
   </section>
 
   <div class="sub" style="border-top:1px solid var(--line); padding-top:16px;">
-    Worklore UI storyboard · docs/PRODUCT_SPEC.md 기준 · 팔레트: docs/DESIGN.md · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span> <span class="chip" style="background:var(--berry-soft); color:var(--berry); border-color:transparent;">V2 공고 맞춤</span>
+    Worklore UI storyboard · based on docs/PRODUCT_SPEC.md · palette: docs/DESIGN.md · milestones: <span class="chip blue">M1 logging + follow-ups</span> <span class="chip green">M2 cards + timeline</span> <span class="chip gold">M3 résumé + billing</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 voice + recap</span> <span class="chip" style="background:var(--berry-soft); color:var(--berry); border-color:transparent;">V2 tailoring</span>
   </div>
 
 </div>
