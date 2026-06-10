@@ -26,6 +26,22 @@ export const en = {
   "journal.error.empty": "Write at least a sentence before saving.",
   "journal.error.generic": "Could not save your entry. Please try again.",
 
+  "card.generate": "Generate achievement card",
+  "card.generating": "Writing your card…",
+  "card.view": "View achievement card →",
+  "card.hint":
+    "This sounds like an achievement. Turn it into a card?",
+  "card.metrics": "Result · metrics",
+  "card.skills": "Skills",
+  "card.period": "Period",
+  "card.status.draft": "draft",
+  "card.status.confirmed": "confirmed",
+  "card.confirm": "Confirm",
+  "card.confirmedNote": "Confirmed — this card can feed your résumé.",
+  "card.sourceNote":
+    "Generated from your original entry — regenerate anytime, your words are never lost.",
+  "card.error.generic": "Could not generate the card. Please try again.",
+
   "qa.heading": "Quick follow-ups",
   "qa.hint": "Answer what you can — numbers fade fast, so now is the best time.",
   "qa.answerPlaceholder": "Your answer…",

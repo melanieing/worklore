@@ -1,15 +1,20 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { generateCardFromEntry } from "@/app/(app)/cards/actions";
 import { t } from "@/lib/i18n/en";
 import { createClient } from "@/lib/supabase/server";
-import type { Entry, QaExchange } from "@/lib/types";
+import type { AchievementCard, Entry, QaExchange } from "@/lib/types";
 import { answerQuestion } from "../actions";
 
 export default async function EntryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { id } = await params;
+  const { error } = await searchParams;
   const supabase = await createClient();
 
   const { data: entryData } = await supabase
@@ -23,13 +28,23 @@ export default async function EntryPage({
   }
   const entry = entryData as Entry;
 
-  const { data: qaData } = await supabase
-    .from("qa_exchanges")
-    .select("*")
-    .eq("entry_id", id)
-    .order("created_at", { ascending: true });
+  const [{ data: qaData }, { data: cardData }] = await Promise.all([
+    supabase
+      .from("qa_exchanges")
+      .select("*")
+      .eq("entry_id", id)
+      .order("created_at", { ascending: true }),
+    supabase
+      .from("achievement_cards")
+      .select("id, title, status")
+      .contains("source_entry_ids", [id])
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+  ]);
 
   const exchanges = (qaData ?? []) as QaExchange[];
+  const card = cardData as Pick<AchievementCard, "id" | "title" | "status"> | null;
 
   return (
     <article className="space-y-8">
@@ -86,6 +101,40 @@ export default async function EntryPage({
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="space-y-3 border-t border-neutral-200 pt-6">
+        {error === "card" && (
+          <p className="rounded-md bg-red-50 p-3 text-sm text-red-700">
+            {t("card.error.generic")}
+          </p>
+        )}
+        {card ? (
+          <Link
+            href={`/cards/${card.id}`}
+            className="block rounded-lg border border-neutral-200 p-4 hover:bg-neutral-50"
+          >
+            <span className="block text-xs text-neutral-400">
+              {card.status === "confirmed"
+                ? t("card.status.confirmed")
+                : t("card.status.draft")}
+            </span>
+            <span className="text-sm font-medium">{card.title}</span>
+            <span className="mt-1 block text-xs text-neutral-500">
+              {t("card.view")}
+            </span>
+          </Link>
+        ) : (
+          <>
+            <p className="text-sm text-neutral-600">✨ {t("card.hint")}</p>
+            <form action={generateCardFromEntry}>
+              <input type="hidden" name="entryId" value={entry.id} />
+              <button className="rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-700">
+                {t("card.generate")}
+              </button>
+            </form>
+          </>
+        )}
       </section>
     </article>
   );

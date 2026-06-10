@@ -9,6 +9,32 @@ export type Entry = {
   created_at: string;
 };
 
+export type CardMetric = {
+  label: string;
+  before: string | null;
+  after: string | null;
+  value: string | null;
+};
+
+export type AchievementCard = {
+  id: string;
+  user_id: string;
+  title: string;
+  situation: string | null;
+  task: string | null;
+  action: string | null;
+  result: string | null;
+  metrics: CardMetric[];
+  skills: string[];
+  project_tag: string | null;
+  period_start: string | null;
+  period_end: string | null;
+  status: "draft" | "confirmed";
+  source_entry_ids: string[];
+  created_at: string;
+  updated_at: string;
+};
+
 export type QaExchange = {
   id: string;
   user_id: string;
