@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worklore — UI 스토리보드</title>
+<style>
+  :root {
+    --ink: #1c1917;
+    --paper: #faf9f7;
+    --line: #e7e3dd;
+    --accent: #2563eb;
+    --accent-soft: #eff4ff;
+    --gold: #b45309;
+    --gold-soft: #fef3e2;
+    --green: #047857;
+    --green-soft: #ecfdf3;
+    --muted: #78716c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+    background: var(--paper); color: var(--ink); padding: 48px 32px 96px;
+  }
+  .container { max-width: 1480px; margin: 0 auto; }
+
+  /* ─── header ─── */
+  .hero { margin-bottom: 18px; }
+  .hero h1 { font-family: Georgia, serif; font-size: 34px; font-weight: 600; }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero p { color: var(--muted); margin-top: 8px; font-size: 14px; max-width: 720px; line-height: 1.6; }
+  .loop {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    margin: 24px 0 48px; font-size: 13px; font-weight: 600;
+  }
+  .loop span.step { background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 7px 14px; }
+  .loop span.arr { color: var(--muted); font-weight: 400; }
+
+  /* ─── sections ─── */
+  section { margin-bottom: 72px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+  .sec-head h2 { font-family: Georgia, serif; font-size: 22px; font-weight: 600; }
+  .sec-head .m { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
+  .m1 { background: var(--accent-soft); color: var(--accent); }
+  .m2 { background: var(--green-soft); color: var(--green); }
+  .m3 { background: var(--gold-soft); color: var(--gold); }
+  .m4 { background: #f3e8ff; color: #7c3aed; }
+  .sec-head .note { color: var(--muted); font-size: 13px; }
+
+  .row { display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start; }
+
+  /* ─── phone frame ─── */
+  .shot { width: 320px; }
+  .frame {
+    width: 320px; height: 580px; background: #fff;
+    border: 1px solid var(--line); border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(28,25,23,.08);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .caption { margin-top: 14px; font-size: 13px; line-height: 1.6; color: var(--muted); padding: 0 4px; }
+  .caption b { color: var(--ink); display: block; margin-bottom: 2px; font-size: 13.5px; }
+  .caption .tag { font-size: 11px; font-weight: 700; margin-right: 6px; }
+
+  /* ─── in-app primitives ─── */
+  .appbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px 12px; border-bottom: 1px solid var(--line); flex-shrink: 0;
+  }
+  .appbar .logo { font-family: Georgia, serif; font-weight: 700; font-size: 16px; }
+  .appbar .right { display: flex; gap: 8px; align-items: center; }
+  .body { padding: 18px; overflow: hidden; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+  .btn {
+    display: inline-block; background: var(--ink); color: #fff; border-radius: 10px;
+    padding: 11px 16px; font-size: 13px; font-weight: 600; text-align: center;
+  }
+  .btn.full { display: block; }
+  .btn.ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+  .btn.blue { background: var(--accent); }
+  .btn.sm { padding: 7px 12px; font-size: 12px; border-radius: 8px; }
+  .input, .textarea {
+    border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px;
+    font-size: 13px; color: var(--muted); background: #fff;
+  }
+  .textarea { min-height: 120px; line-height: 1.55; }
+  .label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .h-title { font-size: 18px; font-weight: 700; line-height: 1.35; }
+  .sub { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .chip {
+    display: inline-block; font-size: 11px; font-weight: 600; border-radius: 99px;
+    padding: 4px 10px; background: var(--paper); border: 1px solid var(--line); color: var(--muted);
+  }
+  .chip.blue { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+  .chip.green { background: var(--green-soft); color: var(--green); border-color: transparent; }
+  .chip.gold { background: var(--gold-soft); color: var(--gold); border-color: transparent; }
+  .card { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: #fff; }
+  .ai-q { background: var(--accent-soft); border-radius: 12px 12px 12px 4px; padding: 11px 13px; font-size: 13px; line-height: 1.5; }
+  .user-a { background: var(--paper); border: 1px solid var(--line); border-radius: 12px 12px 4px 12px; padding: 11px 13px; font-size: 13px; line-height: 1.5; margin-left: 24px; }
+  .ai-avatar { width: 22px; height: 22px; border-radius: 99px; background: var(--accent); color:#fff; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; margin-right: 6px; }
+  .divider { height: 1px; background: var(--line); }
+  .metric { display: flex; justify-content: space-between; font-size: 12.5px; padding: 7px 0; border-bottom: 1px dashed var(--line); }
+  .metric b { font-variant-numeric: tabular-nums; }
+  .arrow-up { color: var(--green); font-weight: 700; }
+  .lock { opacity: .45; filter: grayscale(.4); }
+  .pro-badge { font-size: 10px; font-weight: 800; background: var(--gold); color: #fff; border-radius: 5px; padding: 2px 6px; vertical-align: middle; }
+  .toast { background: var(--ink); color: #fff; font-size: 12px; border-radius: 10px; padding: 10px 14px; }
+  .skeleton { background: linear-gradient(90deg, #f1efec 25%, #faf9f7 50%, #f1efec 75%); border-radius: 8px; height: 13px; }
+  .rec-dot { width: 10px; height: 10px; background: #dc2626; border-radius: 99px; display: inline-block; animation: blink 1.2s infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+  .wave { display: flex; gap: 3px; align-items: center; height: 36px; }
+  .wave i { width: 4px; background: var(--accent); border-radius: 2px; display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <h1>Worklore <em>storyboard</em></h1>
+    <p>"매일 5분, AI 커리어 인터뷰어" — 핵심 루프를 따라 화면이 어떻게 흐르는지 보여주는 스토리보드입니다.
+    각 화면 아래 캡션에 설계 의도(제품 원칙)와 해당 마일스톤을 표시했습니다. V1은 반응형 웹(모바일 우선)이라 모바일 프레임 기준입니다.</p>
+  </div>
+
+  <div class="loop">
+    <span class="step">① 기록</span><span class="arr">→</span>
+    <span class="step">② AI 역질문</span><span class="arr">→</span>
+    <span class="step">③ 답변</span><span class="arr">→</span>
+    <span class="step">④ 성취 카드</span><span class="arr">→</span>
+    <span class="step">⑤ 이력서 불릿 / Export</span><span class="arr">→</span>
+    <span class="step">⑥ 월간 임팩트 요약 (보상)</span>
+  </div>
+
+  <!-- ════════ 1. 온보딩 ════════ -->
+  <section>
+    <div class="sec-head"><h2>1. 진입 &amp; 온보딩</h2><span class="m m1">M1</span><span class="note">가입 직후에도 빈 페이지를 주지 않는다 — AI가 먼저 말을 건다</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="body" style="justify-content:center; gap:18px;">
+            <div style="text-align:center;">
+              <div style="font-family:Georgia,serif; font-size:30px; font-weight:700;">Worklore</div>
+              <div class="sub" style="margin-top:6px;">Your 5-minute AI career interviewer</div>
+            </div>
+            <div style="margin-top:18px; display:flex; flex-direction:column; gap:10px;">
+              <span class="label">Email</span>
+              <div class="input">you@company.com</div>
+              <span class="label">Password</span>
+              <div class="input">••••••••</div>
+              <div class="btn full">Sign in</div>
+              <div class="btn full ghost">Create account</div>
+              <div class="btn full ghost">Continue with Google</div>
+            </div>
+            <div class="sub" style="text-align:center;">No résumé panic. Just talk about your day.</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m1">M1</span>로그인 / 가입</b>
+        이메일 + 소셜(Google, M1-8). 카피부터 "이력서 패닉 없애기"라는 가치 제안을 전달.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">Worklore</span><span class="right"><span class="chip">Free</span></span></div>
+          <div class="body" style="justify-content:center; text-align:center; gap:16px;">
+            <div style="font-size:40px;">💬</div>
+            <div class="h-title">What happened at work recently?</div>
+            <div class="sub">A couple of sentences is plenty — shipped something, fixed something, talked someone into something. I'll ask the rest.</div>
+            <div class="btn full blue">✏️ Write it down</div>
+            <div class="btn full ghost">🎤 Talk for 2 minutes</div>
+            <div class="sub" style="font-size:11.5px;">2–3 times a week is plenty. No streaks, no guilt.</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m1">M1</span>첫 화면 (빈 상태)</b>
+        원칙 1 "빈 페이지 금지" — AI가 먼저 질문하고, 텍스트/음성 두 입구를 동급으로 제시. 원칙 4 "주 2~3회면 충분" 톤 명시.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════ 2. 기록 + 역질문 ════════ -->
+  <section>
+    <div class="sec-head"><h2>2. 기록 → AI 역질문 루프</h2><span class="m m1">M1</span><span class="note">지표가 신선할 때 캡처한다 — 역질문은 1~3개, 심문 금지</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ New entry</span><span class="chip">Jun 10</span></div>
+          <div class="body">
+            <div class="textarea" style="color:var(--ink);">Rolled out the new caching layer today. Checkout got noticeably faster and the infra team was happy. Took about three weeks end to end.</div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <span class="chip">📅 When? Jun 10</span>
+              <span class="chip">🎤 voice</span>
+            </div>
+            <div class="btn full blue">Save &amp; get questions →</div>
+            <div class="sub">Your original words are kept forever, untouched. Cards are generated <i>from</i> them — never instead of them.</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m1">M1</span>기록 입력</b>
+        줄글 그대로 적게 한다. 원칙 2 "원데이터 절대 보존"을 UI 카피로도 약속.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ Jun 10</span><span class="chip blue">3 questions</span></div>
+          <div class="body">
+            <div class="sub" style="background:var(--paper); border-radius:10px; padding:10px 12px;">"Rolled out the new caching layer today. Checkout got noticeably faster…"</div>
+            <div><span class="ai-avatar">W</span><span style="font-size:12px; font-weight:700;">Quick follow-ups</span>
+              <span class="sub" style="display:block; margin:4px 0 0 28px; font-size:11.5px;">Numbers fade fast — now is the best time.</span></div>
+            <div class="ai-q">⚡ "Noticeably faster" — do you know the before/after? Even rough p95 numbers are gold.</div>
+            <div class="user-a">p95 went from ~1.2s to about 300ms</div>
+            <div class="ai-q">How much of checkout traffic goes through this path?</div>
+            <div style="display:flex; gap:8px; margin-left:24px;">
+              <div class="input" style="flex:1;">Your answer…</div>
+              <div class="btn sm">Save</div>
+            </div>
+            <div class="sub" style="text-align:center;">Skip — answer later from the entry page</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m1">M1</span>역질문 스레드</b>
+        원칙 3 — 1~3개 제한, 전후 수치부터(우선순위 ①). 건너뛰기 가능: 심문이 아니라 코치. 답변도 원데이터로 immutable 저장.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ Jun 10</span><span class="chip green">✓ answered</span></div>
+          <div class="body">
+            <div class="ai-q">How much of checkout traffic goes through this path?</div>
+            <div class="user-a">All of it — 100% of checkout, ~40k orders/day</div>
+            <div class="divider"></div>
+            <div class="toast">✨ This sounds like an achievement. Turn it into a card?</div>
+            <div class="btn full">Generate achievement card</div>
+            <div class="btn full ghost">Not now</div>
+            <div class="sub" style="text-align:center;">You can always generate it later — your words are saved.</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m2">M2</span>카드 생성 제안</b>
+        자동 생성하지 않고 사용자 액션으로(비용 전략 §5 — 불필요 호출 제거). 거절해도 원데이터가 있으니 언제든 가능.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════ 3. 성취 카드 ════════ -->
+  <section>
+    <div class="sec-head"><h2>3. 성취 카드 (STAR)</h2><span class="m m2">M2</span><span class="note">파생물은 언제든 재생성 가능 — draft → confirmed</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ Card</span><span class="chip gold">draft</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="h-title" style="font-size:16px;">Cut checkout latency 75% with new caching layer</div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span class="chip blue">#checkout-perf</span><span class="chip">Redis</span><span class="chip">Performance</span>
+            </div>
+            <div class="card" style="padding:10px 12px;">
+              <span class="label">Result · metrics</span>
+              <div class="metric"><span>p95 latency</span><b>1.2s → 300ms <span class="arrow-up">▲75%</span></b></div>
+              <div class="metric" style="border:none;"><span>orders affected</span><b>~40k / day</b></div>
+            </div>
+            <div class="sub"><b style="color:var(--ink);">S</b> — Checkout latency was degrading conversion…<br>
+            <b style="color:var(--ink);">T</b> — Own the caching layer redesign…<br>
+            <b style="color:var(--ink);">A</b> — Designed and rolled out in 3 weeks…</div>
+            <div style="display:flex; gap:8px;">
+              <div class="btn sm" style="flex:1;">✓ Confirm</div>
+              <div class="btn sm ghost" style="flex:1;">✎ Edit</div>
+              <div class="btn sm ghost">↻</div>
+            </div>
+            <div class="sub" style="font-size:11px;">↻ Regenerate · <span class="pro-badge">PRO</span> higher-quality regeneration</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m2">M2</span>카드 상세 (draft)</b>
+        STAR + metrics + skills 자동 구조화. 사용자가 다듬고 confirm. "고품질 재생성"은 Pro(플랜별 모델 라우팅 결정).</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">Timeline</span><span class="right"><span class="chip">#all ▾</span></span></div>
+          <div class="body" style="gap:10px;">
+            <div class="sub"><b style="color:var(--ink);">2026</b></div>
+            <div class="card" style="border-left:3px solid var(--green);">
+              <div style="font-size:13px; font-weight:700;">Cut checkout latency 75%</div>
+              <div class="sub" style="font-size:11.5px;">May–Jun · #checkout-perf · <span class="chip green" style="font-size:10px;">confirmed</span></div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--gold);">
+              <div style="font-size:13px; font-weight:700;">Led incident postmortem process revamp</div>
+              <div class="sub" style="font-size:11.5px;">Apr · #reliability · <span class="chip gold" style="font-size:10px;">draft</span></div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--green);">
+              <div style="font-size:13px; font-weight:700;">Onboarded 3 engineers to payments team</div>
+              <div class="sub" style="font-size:11.5px;">Feb–Mar · #team · <span class="chip green" style="font-size:10px;">confirmed</span></div>
+            </div>
+            <div class="sub" style="text-align:center;">— scroll for 2025 —</div>
+            <div class="btn full ghost">+ 12 entries not yet carded</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m2">M2</span>타임라인</b>
+        커리어가 쌓이는 게 보이는 화면 — 리텐션의 시각적 보상. 기간순 정렬, 태그 필터, 카드화 안 된 기록도 노출해 루프 재진입 유도.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════ 4. 이력서 + 유료벽 ════════ -->
+  <section>
+    <div class="sec-head"><h2>4. 이력서 산출 &amp; 유료벽</h2><span class="m m3">M3</span><span class="note">"이직 결심 순간"이 과금 트리거 — export는 Pro 뒤에</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">Resume</span><span class="chip">tone: concise ▾</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="sub"><b style="color:var(--ink);">Senior Backend Engineer · 2024–</b></div>
+            <div class="card" style="padding:11px 13px; font-size:12.5px; line-height:1.55;">
+              • Cut checkout p95 latency <b>75% (1.2s→300ms)</b> across <b>40k daily orders</b> by designing a new caching layer; shipped in 3 weeks
+              <div style="margin-top:6px; display:flex; gap:6px;"><span class="chip" style="font-size:10px;">↻ rewrite</span><span class="chip" style="font-size:10px;">tone ▾</span></div>
+            </div>
+            <div class="card" style="padding:11px 13px; font-size:12.5px; line-height:1.55;">
+              • Revamped incident postmortem process, cutting repeat incidents <b>~30%</b> quarter-over-quarter
+            </div>
+            <div class="skeleton" style="width:80%;"></div>
+            <div class="skeleton" style="width:65%;"></div>
+            <div class="divider"></div>
+            <div style="display:flex; gap:8px;">
+              <div class="btn sm ghost" style="flex:1;">⬇ Markdown <span class="pro-badge">PRO</span></div>
+              <div class="btn sm ghost" style="flex:1;">⬇ PDF <span class="pro-badge">PRO</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m3">M3</span>이력서 불릿</b>
+        confirmed 카드 → 정량 중심 불릿 자동 생성, 톤 2종(concise/detailed), 버전 관리. export 버튼에 Pro 게이트.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar lock"><span class="logo">Resume</span></div>
+          <div class="body">
+            <div class="lock" style="display:flex; flex-direction:column; gap:8px;">
+              <div class="skeleton"></div><div class="skeleton" style="width:85%;"></div><div class="skeleton" style="width:70%;"></div>
+            </div>
+            <div class="card" style="box-shadow:0 12px 32px rgba(28,25,23,.14); text-align:center; padding:20px 16px;">
+              <div style="font-size:26px;">🔓</div>
+              <div class="h-title" style="font-size:16px; margin:8px 0 4px;">Your résumé is ready.</div>
+              <div class="sub">14 achievements captured over 3 months — export them when you need them most.</div>
+              <div class="btn full blue" style="margin-top:14px;">Upgrade to Pro — $7/mo</div>
+              <div class="sub" style="margin-top:8px; font-size:11.5px;">Unlimited entries · PDF &amp; Markdown export<br>Higher-quality cards &amp; bullets</div>
+            </div>
+            <div class="sub" style="text-align:center;">Free keeps everything saved. Forever.</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m3">M3</span>업그레이드 모달</b>
+        "이직 결심 순간"에 만나는 화면. 가치를 먼저 쌓고(14개 성취) 그 순간에 과금. Pro 혜택에 "더 정교한 카드" — 모델명은 노출 금지.</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">Settings</span><span class="chip gold">Pro</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="card">
+              <span class="label">This month</span>
+              <div class="metric"><span>Entries</span><b>9 / unlimited</b></div>
+              <div class="metric" style="border:none;"><span>Cards confirmed</span><b>5</b></div>
+            </div>
+            <div class="card">
+              <span class="label">Plan</span>
+              <div class="metric"><span>Worklore Pro</span><b>$7/mo</b></div>
+              <div class="sub" style="margin-top:6px;">Manage billing ›</div>
+            </div>
+            <div class="card">
+              <span class="label">Monthly impact email</span>
+              <div class="metric" style="border:none;"><span>1st of each month</span><b>On ✓</b></div>
+            </div>
+            <div class="sub">Display name · Job title · Timezone · Locale (EN)</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m3">M3</span>설정 / 플랜</b>
+        사용량·플랜·요약 이메일 토글. Free는 "Entries 9 / 10"처럼 한도 표시 → 자연스러운 업그레이드 동선.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════ 5. 음성 + 월간 요약 ════════ -->
+  <section>
+    <div class="sec-head"><h2>5. 음성 입력 &amp; 월간 임팩트 요약</h2><span class="m m4">M4</span><span class="note">퇴근길 2분 녹음(마찰 제거) + 월간 요약(보상 루프)</span></div>
+    <div class="row">
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">‹ Voice entry</span><span><span class="rec-dot"></span> <b style="font-size:12px;">1:24</b></span></div>
+          <div class="body" style="justify-content:center; text-align:center; gap:20px;">
+            <div class="sub">Just talk — what happened this week?</div>
+            <div class="wave" style="justify-content:center;">
+              <i style="height:12px"></i><i style="height:26px"></i><i style="height:18px"></i><i style="height:34px"></i><i style="height:22px"></i><i style="height:30px"></i><i style="height:14px"></i><i style="height:28px"></i><i style="height:20px"></i><i style="height:10px"></i>
+            </div>
+            <div style="width:84px; height:84px; border-radius:99px; background:#dc2626; color:#fff; display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto;">■</div>
+            <div class="sub">Tap to finish · transcript shown for review before saving</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m4">M4</span>음성 녹음</b>
+        음성은 1급 시민. 녹음 → STT 전사 → 확인/수정 → 저장하면 기존 역질문 루프 그대로 재사용. 오디오 원본도 보존(audio_url).</div>
+      </div>
+
+      <div class="shot">
+        <div class="frame">
+          <div class="appbar"><span class="logo">📬 Your June impact</span></div>
+          <div class="body" style="gap:10px;">
+            <div class="sub" style="font-size:11px;">monthly email · worklore → you</div>
+            <div class="h-title" style="font-size:17px;">You shipped more than you think, Melanie.</div>
+            <div class="card" style="padding:12px;">
+              <div class="metric"><span>Entries captured</span><b>11</b></div>
+              <div class="metric"><span>New achievement cards</span><b>4</b></div>
+              <div class="metric" style="border:none;"><span>Metrics rescued from oblivion</span><b>9 🔥</b></div>
+            </div>
+            <div class="sub"><b style="color:var(--ink);">Highlight:</b> Cut checkout latency 75% — this alone is a résumé-grade win.</div>
+            <div class="btn full">See your June timeline →</div>
+            <div class="sub" style="font-size:11px; text-align:center;">No entries in July yet? That's fine. 2–3 a week is plenty.</div>
+          </div>
+        </div>
+        <div class="caption"><b><span class="tag m4">M4</span>월간 임팩트 요약 (이메일)</b>
+        스트릭 대신 성과 요약으로 보상(원칙 4). "사라질 뻔한 지표 9개 구조" — 제품 가치를 숫자로 증명하고 재방문 유도.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sub" style="border-top:1px solid var(--line); padding-top:16px;">
+    Worklore UI storyboard · docs/PRODUCT_SPEC.md 기준 · 마일스톤: <span class="chip blue">M1 기록+역질문</span> <span class="chip green">M2 카드+타임라인</span> <span class="chip gold">M3 이력서+결제</span> <span class="chip" style="background:#f3e8ff; color:#7c3aed; border-color:transparent;">M4 음성+요약</span>
+  </div>
+
+</div>
+</body>
+</html>
